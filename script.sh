@@ -11,9 +11,10 @@ else
   mkdir /data /data/db
   systemctl enable mongod
   service mongod start
-  mongo "admin" --eval "db.createUser({'user':'webapp','pwd':'$mongo_admin_pwd','roles': ['userAdminAnyDatabase','readWriteAnyDatabase']})"
+  mongo "admin" --eval "db.createUser({'user':'webapp','pwd':'webapptest123','roles': ['userAdminAnyDatabase','readWriteAnyDatabase']})"
   echo ' ' >> /etc/mongod.conf
   echo 'security:' >> /etc/mongod.conf
   echo '  authorization: enabled' >> /etc/mongod.conf
+  sed -i 's/127.0.0.1/$1/g' /etc/mongod.conf
   service mongod restart
 fi
