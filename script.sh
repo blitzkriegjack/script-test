@@ -15,6 +15,6 @@ else
   echo ' ' >> /etc/mongod.conf
   echo 'security:' >> /etc/mongod.conf
   echo '  authorization: enabled' >> /etc/mongod.conf
-  sed -i 's/127.0.0.1/$1/g' /etc/mongod.conf
+  sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
   service mongod restart
 fi
